@@ -100,89 +100,53 @@ You can solve this optimization problem by finding the first derivative and usin
 
 The equilibrium condition is as follows:
 
-$\ \frac{y_1 - \text{USDT}_a}{x_1 + \alpha k} = \frac{y_2 - \text{USDT}_b}{x_2 + (1 - \alpha) k} $
+$$ \frac{y_1 - \text{USDT}_a}{x_1 + \alpha k} = \frac{y_2 - \text{USDT}_b}{x_2 + (1 - \alpha) k} $$
 
 and we get:
 
-$\  \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + (1 - \alpha) k)^2} $
-
-$\ \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + \beta k)^2}$
+$$  \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + (1 - \alpha) k)^2} $$
 
 
-We start with the following initial conditions:
+### Expansion: from Two to Multiple Chains
+
+Based on the equilibrium condition, which is the no-arbitrage condition of equal prices, we can derive that in the case of three chains, the equilibrium condition follows:
 $\ \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + \beta k)^2} = \frac{c}{(x_3 + (1 - \alpha - \beta)k)^2} $
 
 Where:
-- $a, b, c$ are the constants representing the respective token amounts.
+- $a, b, c$ are the constants for each chain's liquidity pool.
 - $x_1, x_2, x_3$ are the initial amounts of tokens on chains 1, 2, and 3 respectively.
 - $\alpha, \beta$ are the fractions of $k$ distributed to chains 1 and 2 respectively.
 - $k$ is the total amount to be distributed.
-- $( 1 - \alpha - \beta$ is the fraction of $k$ distributed to chain 3.
-
-#### Step-by-Step Derivation
-
-##### Step 1: Define the Equilibrium Condition
-
-The equilibrium condition can be written as:
-$\ A = \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + \beta k)^2} = \frac{c}{(x_3 + (1 - \alpha - \beta)k)^2} $
-
-##### Step 2: Equate the Expressions
-
-We equate the expressions for the equilibrium condition:
-$\ \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + \beta k)^2} = \frac{c}{(x_3 + (1 - \alpha - \beta)k)^2} $
-
-##### Step 3: Solve for $A$
-
-Let:
-$\ A = \frac{a}{(x_1 + \alpha k)^2}$
-$\ A = \frac{b}{(x_2 + \beta k)^2}$
-$\ A = \frac{c}{(x_3 + (1 - \alpha - \beta)k)^2}$
-
-##### Step 4: Rearrange to Isolate $k$
-
-Rearrange each equation to isolate $k$:
-$\ (x_1 + \alpha k)^2 = \frac{a}{A} $
-$\ (x_2 + \beta k)^2 = \frac{b}{A} $
-$\ (x_3 + (1 - \alpha - \beta)k)^2 = \frac{c}{A} $
-
-##### Step 5: Solve for $\alpha$, $\beta$, and $k$
-
-Solving these equations simultaneously will yield the values of $\alpha$, $\beta$, and $k$ that satisfy the equilibrium condition:
-$\ \alpha = \frac{\sqrt{\frac{a}{A}} - x_1}{k} $
-$\ \beta = \frac{\sqrt{\frac{b}{A}} - x_2}{k} $
-$\ 1 - \alpha - \beta = \frac{\sqrt{\frac{c}{A}} - x_3}{k} $
-
-##### Step 6: Ensure No Arbitrage
-
-To ensure no arbitrage, the sum of the fractions must equal 1:
-$\ \alpha + \beta + (1 - \alpha - \beta) = 1 $
-
-#### Conclusion
-
-The above steps outline the derivation of the equilibrium condition for the 1-N swap algorithm, ensuring that the swap is performed at optimal prices with no arbitrage opportunities.
+- $( 1 - \alpha - \beta)$ is the fraction of $k$ distributed to chain 3.
 
 
+Therefore, we can derive that in the case of an infinite number of chains, the equilibrium condition follows:
 
-3. **Modes of Operation**
-    - 1-N Swap
-    - 1-1 Swap
-    - N-1 Swap
-    - N-N Swap
+$$
+\frac{a_1}{(x_1 + \alpha_1 k)^2} = \frac{a_2}{(x_2 + \alpha_2 k)^2} = \frac{a_3}{(x_3 + \alpha_3 k)^2} = \ldots = \frac{a_n}{(x_n + \alpha_n k)^2}
+$$
 
-4. **Development**
+Where:
+- $a_i$ is the constant for the $i$-th chain's liquidity pool.
+- $x_i$ is the initial amount of tokens on the $i$-th chain.
+- $\alpha_i$ is the fraction of $k$ distributed to the $i$-th chain.
+- $k$ is the total amount to be distributed.
+- $\sum_{i=1}^{\infty} \alpha_i = 1$ ensures that the total distribution fractions sum up to 1.
+
+In this scenario, each chain $i$ will have its liquidity pool adjusted according to the fraction $\alpha_i$ of the total amount $k$ being distributed. The equilibrium condition maintains the no-arbitrage principle across an infinite number of chains, ensuring that the price remains equal across all chains.
+
+
+**Development**
     - Demo Implementation
     - Algorithms Used
     - Supported Chains
 
-5. **Future Plans**
+**Future Plans**
     - N-N Swap Development
     - Additional Features and Enhancements
 
-6. **Conclusion**
+**Conclusion**
     - Summary
     - Potential Impact
 
-7. **Appendices**
-    - Glossary of Terms
-    - References and Resources
 
