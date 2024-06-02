@@ -3,7 +3,17 @@
   "description": "",
   "version": "1.0.0",
   "dependencies": {
-    "@openzeppelin/contracts": "^5.0.1"
+    "@chainlink/contracts": "^1.0.0",
+    "@chainlink/contracts-ccip": "^1.4.0",
+    "@openzeppelin/contracts": "^5.0.1",
+    "@openzeppelin/contracts-upgradeable": "^5.0.1",
+    "@openzeppelin/upgrades-core": "^1.32.5",
+    "@uniswap/v2-core": "^1.0.1",
+    "@uniswap/v2-periphery": "1.1.0-beta.0",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.2",
+    "hardhat-deploy": "^0.12.2",
+    "viem": "^2.9.16"
   },
   "devDependencies": {
     "forge-std": "github:foundry-rs/forge-std#v1.8.1",
@@ -29,6 +39,7 @@
     "prettier:write": "prettier --write \"**/*.{json,md,yml}\" --ignore-path \".prettierignore\"",
     "test": "forge test",
     "test:coverage": "forge coverage",
-    "test:coverage:report": "forge coverage --report lcov && genhtml lcov.info --branch-coverage --output-dir coverage"
+    "test:coverage:report": "forge coverage --report lcov && genhtml lcov.info --branch-coverage --output-dir coverage",
+    "deploy": "hardhat deploy"
   }
 }

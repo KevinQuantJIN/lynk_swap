@@ -1,2 +1,5 @@
 @openzeppelin/contracts/=node_modules/@openzeppelin/contracts/
+@chainlink/contracts-ccip/=node_modules/@chainlink/contracts-ccip/
+@openzeppelin/contracts-upgradeable/=node_modules/@openzeppelin/contracts-upgradeable/
+
 forge-std/=node_modules/forge-std/
