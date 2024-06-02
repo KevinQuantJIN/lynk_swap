@@ -35,6 +35,9 @@ contract LynkMessager is UUPSUpgradeable, CCIPReceiverUpgradeable {
         (address[] memory paths, uint256 inAmount, uint256 minOut, address receiver) =
             abi.decode(any2EvmMessage.data, (address[], uint256, uint256, address));
 
+        address inToken = paths[0];
+        address outToken = paths[paths.length - 1];
+
         LynkMessagerStorage storage $ = _getLynkMessagerStorage();
 
         //
@@ -42,12 +45,12 @@ contract LynkMessager is UUPSUpgradeable, CCIPReceiverUpgradeable {
             $.uniswapV2Router.swapExactTokensForTokens.selector, inAmount, minOut, paths, receiver, block.timestamp + 1
         );
 
+        // approve token
+        IERC20(inToken).approve(address($.uniswapV2Router), inAmount);
+
         (bool success, bytes memory res) = address($.uniswapV2Router).call(callData);
 
         uint256[] memory amount = abi.decode(res, (uint256[]));
-
-        address inToken = paths[0];
-        address outToken = paths[paths.length - 1];
 
         if (success) {
             emit OrderFilled(any2EvmMessage.messageId, inToken, inAmount, outToken, amount[1]);
