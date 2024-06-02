@@ -1,4 +1,4 @@
-# lynk Swap
+# Lynk Swap
 
 Lynk Swap is an omnichain decentralized exchange (DEX) developed as a project of the Chainlink 2024 Hackathon. This project aims to facilitate the most flexible DEX trading across all chains. It supports four unique modes of operation:
 
@@ -140,16 +140,32 @@ In this scenario, each chain $i$ will have its liquidity pool adjusted according
 
 
 ## Development
-    - Demo Implementation
-    - Algorithms Used
-    - Supported Chains
 
-## Future Plans
-    - N-N Swap Development
-    - Additional Features and Enhancements
+### Demo Implementation
+tbf
 
-## Conclusion
-    - Summary
-    - Potential Impact
+### Algorithms Used
+
+Lynk Swap leverages the Constant Product Market Maker (CPMM) algorithm, a fundamental principle behind Uniswap V2, to facilitate decentralized exchanges. Currently, our demo uses Uniswap V2, but we plan to support Uniswap V3 in the future.
+
+Additionally, Lynk Swap incorporates an advanced aggregation algorithm to determine the optimal exchange amounts. The 1-N Swap algorithm is designed to distribute assets from one chain to multiple chains at the best price. This algorithm operates under the arbitrage-free assumption, ensuring that the prices across different chains are equalized to prevent arbitrage opportunities. 
+
+For the future N-N Swap mode, Lynk Swap aims to extend this aggregation algorithm to handle multiple assets across multiple chains, optimizing the overall swap process by balancing liquidity and achieving the best exchange rates across a diverse set of chains.
+
+### Supported Chains
+
+Lynk Swap currently supports the following blockchain networks:
+
+- Ethereum (ETH)
+- Polygon (MATIC)
+- Base (BASE)
+- Avalanche (AVAX)
+
+In the future, Lynk Swap plans to support more blockchain networks, including additional EVM compatible chains and even non-EVM chains. This expansion will further enhance the interoperability and reach of the platform.
+
+Cross-chain functionality in Lynk Swap is implemented using the Chainlink Cross-Chain Interoperability Protocol (CCIP), which ensures secure and efficient interactions between different blockchain networks.
+
+
+## Chainlink Function Used
 
 
