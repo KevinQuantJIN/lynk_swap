@@ -1,7 +1,5 @@
 # lynk Swap
 
-## Overview
-
 Lynk Swap is an omnichain decentralized exchange (DEX) developed as a project of the Chainlink 2024 Hackathon. This project aims to facilitate the most flexible DEX trading across all chains. It supports four unique modes of operation:
 
 1. **1-N Swap**: This mode allows users to exchange assets from one chain to multiple chains at the optimal price. The distribution of assets across different chains is determined based on an arbitrage-free assumption. This mode can be considered as an omnichain DEX aggregator.
