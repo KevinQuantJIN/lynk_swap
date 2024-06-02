@@ -32,24 +32,22 @@ contract LynkMessager is UUPSUpgradeable, CCIPReceiverUpgradeable {
     // handle a received message
     function _ccipReceive(Client.Any2EVMMessage memory any2EvmMessage) internal override {
         // logic here
-        (address inToken, address outToken, uint256 inAmount, uint256 minOut) =
-            abi.decode(any2EvmMessage.data, (address, address, uint256, uint256));
+        (address[] memory paths, uint256 inAmount, uint256 minOut, address receiver) =
+            abi.decode(any2EvmMessage.data, (address[], uint256, uint256, address));
 
         LynkMessagerStorage storage $ = _getLynkMessagerStorage();
 
         //
         bytes memory callData = abi.encodeWithSelector(
-            $.uniswapV2Router.swapExactTokensForTokens.selector,
-            inAmount,
-            minOut,
-            [inToken, outToken],
-            0xba45b3d7A42c3554fa98bDC3F790da2676Cb0560,
-            block.timestamp + 1
+            $.uniswapV2Router.swapExactTokensForTokens.selector, inAmount, minOut, paths, receiver, block.timestamp + 1
         );
 
         (bool success, bytes memory res) = address($.uniswapV2Router).call(callData);
 
         uint256[] memory amount = abi.decode(res, (uint256[]));
+
+        address inToken = paths[0];
+        address outToken = paths[paths.length - 1];
 
         if (success) {
             emit OrderFilled(any2EvmMessage.messageId, inToken, inAmount, outToken, amount[1]);

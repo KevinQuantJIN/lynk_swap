@@ -130,8 +130,11 @@ contract LynkSwapRouter is UUPSUpgradeable {
 
         address messager = $.messagers[chainSelector];
 
-        bytes memory swapData =
-            abi.encode($.tokenMaps[chainSelector][inToken], $.tokenMaps[chainSelector][outToken], inAmount, minOut);
+        address[] memory paths = new address[](2);
+        paths[0] = $.tokenMaps[chainSelector][inToken];
+        paths[1] = $.tokenMaps[chainSelector][outToken];
+
+        bytes memory swapData = abi.encode(paths, inAmount, minOut, msg.sender);
 
         Client.EVM2AnyMessage memory evm2AnyMessage =
             _buildCCIPMessage(messager, inToken, inAmount, address(0), swapData);
