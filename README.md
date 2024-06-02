@@ -1,4 +1,4 @@
-# lynk_swap
+# lynk Swap
 
 ## Overview
 
@@ -24,11 +24,11 @@ The demo development is based on the Uniswap V2 constant product market maker (C
     - System Design
     - Smart Contract Details
     - Security Considerations
-# 1-N Swap Algorithm Equilibrium Condition
+### 1-N Swap Algorithm Equilibrium Condition
 
 In the 1-N swap algorithm, the goal is to exchange assets from one chain to multiple chains at the optimal price. The distribution of assets across different chains is determined based on an arbitrage-free assumption. Below is the detailed derivation of the equilibrium condition for the 1-N swap algorithm.
 
-## Given Equations
+#### Given Equations
 
 We start with the following initial conditions:
 $\ \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + \beta k)^2} = \frac{c}{(x_3 + (1 - \alpha - \beta)k)^2} $
@@ -36,49 +36,49 @@ $\ \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + \beta k)^2} = \frac{c}{(x_3 + 
 Where:
 - $a, b, c$ are the constants representing the respective token amounts.
 - $x_1, x_2, x_3$ are the initial amounts of tokens on chains 1, 2, and 3 respectively.
-- $\ \alpha, \beta \$ are the fractions of $k$ distributed to chains 1 and 2 respectively.
-- $\ k \$ is the total amount to be distributed.
-- $\( 1 - \alpha - \beta \$ is the fraction of $k$ distributed to chain 3.
+- $\alpha, \beta$ are the fractions of $k$ distributed to chains 1 and 2 respectively.
+- $k$ is the total amount to be distributed.
+- $( 1 - \alpha - \beta$ is the fraction of $k$ distributed to chain 3.
 
-## Step-by-Step Derivation
+#### Step-by-Step Derivation
 
-### Step 1: Define the Equilibrium Condition
+##### Step 1: Define the Equilibrium Condition
 
 The equilibrium condition can be written as:
-\[ A = \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + \beta k)^2} = \frac{c}{(x_3 + (1 - \alpha - \beta)k)^2} \]
+$\ A = \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + \beta k)^2} = \frac{c}{(x_3 + (1 - \alpha - \beta)k)^2} $
 
-### Step 2: Equate the Expressions
+##### Step 2: Equate the Expressions
 
 We equate the expressions for the equilibrium condition:
-\[ \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + \beta k)^2} = \frac{c}{(x_3 + (1 - \alpha - \beta)k)^2} \]
+$\ \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + \beta k)^2} = \frac{c}{(x_3 + (1 - \alpha - \beta)k)^2} $
 
-### Step 3: Solve for \( A \)
+##### Step 3: Solve for $A$
 
 Let:
-\[ A = \frac{a}{(x_1 + \alpha k)^2} \]
-\[ A = \frac{b}{(x_2 + \beta k)^2} \]
-\[ A = \frac{c}{(x_3 + (1 - \alpha - \beta)k)^2} \]
+$\ A = \frac{a}{(x_1 + \alpha k)^2}$
+$\ A = \frac{b}{(x_2 + \beta k)^2}$
+$\ A = \frac{c}{(x_3 + (1 - \alpha - \beta)k)^2}$
 
-### Step 4: Rearrange to Isolate \( k \)
+##### Step 4: Rearrange to Isolate $k$
 
-Rearrange each equation to isolate \( k \):
-\[ (x_1 + \alpha k)^2 = \frac{a}{A} \]
-\[ (x_2 + \beta k)^2 = \frac{b}{A} \]
-\[ (x_3 + (1 - \alpha - \beta)k)^2 = \frac{c}{A} \]
+Rearrange each equation to isolate $k$:
+$\ (x_1 + \alpha k)^2 = \frac{a}{A} $
+$\ (x_2 + \beta k)^2 = \frac{b}{A} $
+$\ (x_3 + (1 - \alpha - \beta)k)^2 = \frac{c}{A} $
 
-### Step 5: Solve for \( \alpha \), \( \beta \), and \( k \)
+##### Step 5: Solve for $\alpha$, $\beta$, and $k$
 
-Solving these equations simultaneously will yield the values of \( \alpha \), \( \beta \), and \( k \) that satisfy the equilibrium condition:
-\[ \alpha = \frac{\sqrt{\frac{a}{A}} - x_1}{k} \]
-\[ \beta = \frac{\sqrt{\frac{b}{A}} - x_2}{k} \]
-\[ 1 - \alpha - \beta = \frac{\sqrt{\frac{c}{A}} - x_3}{k} \]
+Solving these equations simultaneously will yield the values of $\alpha$, $\beta$, and $k$ that satisfy the equilibrium condition:
+$\ \alpha = \frac{\sqrt{\frac{a}{A}} - x_1}{k} $
+$\ \beta = \frac{\sqrt{\frac{b}{A}} - x_2}{k} $
+$\ 1 - \alpha - \beta = \frac{\sqrt{\frac{c}{A}} - x_3}{k} $
 
-### Step 6: Ensure No Arbitrage
+##### Step 6: Ensure No Arbitrage
 
 To ensure no arbitrage, the sum of the fractions must equal 1:
-\[ \alpha + \beta + (1 - \alpha - \beta) = 1 \]
+$\ \alpha + \beta + (1 - \alpha - \beta) = 1 $
 
-## Conclusion
+#### Conclusion
 
 The above steps outline the derivation of the equilibrium condition for the 1-N swap algorithm, ensuring that the swap is performed at optimal prices with no arbitrage opportunities.
 
