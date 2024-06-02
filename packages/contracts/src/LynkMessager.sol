@@ -16,7 +16,7 @@ contract LynkMessager is UUPSUpgradeable, CCIPReceiverUpgradeable {
 
     event OrderFilled(bytes32 messageId, address fromToken, uint256 fromAmount, address toToken, uint256 toAmount);
 
-    event OrderWaiting(bytes32 messageId);
+    event OrderWaiting(bytes32 messageId, address fromToken, uint256 fromAmount, address toToken);
 
     function initialize(address router_, IUniswapV2Router02 uniswapV2Router_) external initializer {
         __CCIPReceiver_init(router_);
@@ -55,7 +55,7 @@ contract LynkMessager is UUPSUpgradeable, CCIPReceiverUpgradeable {
             emit OrderFilled(any2EvmMessage.messageId, inToken, inAmount, outToken, amount[1]);
         } else {
             // save the intention and wait for suitable time
-            emit OrderWaiting(any2EvmMessage.messageId);
+            emit OrderWaiting(any2EvmMessage.messageId, inToken, inAmount, outToken);
         }
     }
 

@@ -14,7 +14,7 @@ const deployer = privateKeyToAccount(accounts("sepolia")[0] as Hex).address;
 const config: HardhatUserConfig = {
   solidity: {
     version: "0.8.25",
-    settings: { evmVersion: "paris" },
+    settings: { evmVersion: "paris", viaIR: true },
   },
   namedAccounts: {
     deployer: deployer,

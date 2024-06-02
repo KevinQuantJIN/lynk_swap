@@ -32,7 +32,8 @@ contract LynkSwapRouter is UUPSUpgradeable {
     // The token amount that was transferred.
     // the token address used to pay CCIP fees.
     // The fees paid for sending the message.
-    event TokensTransferred( // The unique ID of the message.
+    // The unique ID of the message.
+    event TokensTransferred(
         bytes32 indexed messageId,
         uint64 indexed destinationChainSelector,
         address receiver,
@@ -42,7 +43,14 @@ contract LynkSwapRouter is UUPSUpgradeable {
         uint256 fees
     );
 
-    event InvokeSwap(uint256 feeAmount);
+    event InvokeSwap(
+        bytes32 indexed messageIdA,
+        bytes32 indexed messageIdB,
+        bytes32 indexed messageIdC,
+        address fromToken,
+        uint256 fromAmount,
+        uint256 feeAmount
+    );
 
     // keccak256(abi.encode(uint256(keccak256("lynkswap.storage.router")) - 1)) & ~ bytes32(uint256(0xff))
     //
@@ -82,13 +90,18 @@ contract LynkSwapRouter is UUPSUpgradeable {
     {
         LynkSwapRouterStorage storage $ = _getLynkSwapRouterStorage();
 
-        uint256 feeA = _swapOnSingleChain($.chainASelector, tokenIn, tokenOut, amountA, minA);
-        uint256 feeB = _swapOnSingleChain($.chainBSelector, tokenIn, tokenOut, amountB, minB);
-        uint256 feeC = _swapOnSingleChain($.chainCSelector, tokenIn, tokenOut, amountC, minC);
+        uint256 totalInAmount = amountA + amountB + amountC;
+
+        // transfer in token from user to contracts
+        IERC20(tokenIn).transferFrom(msg.sender, address(this), totalInAmount);
+
+        (uint256 feeA, bytes32 messageIdA) = _swapOnSingleChain($.chainASelector, tokenIn, tokenOut, amountA, minA);
+        (uint256 feeB, bytes32 messageIdB) = _swapOnSingleChain($.chainBSelector, tokenIn, tokenOut, amountB, minB);
+        (uint256 feeC, bytes32 messageIdC) = _swapOnSingleChain($.chainCSelector, tokenIn, tokenOut, amountC, minC);
 
         uint256 totalFee = feeA + feeB + feeC;
 
-        emit InvokeSwap(totalFee);
+        emit InvokeSwap(messageIdA, messageIdB, messageIdC, tokenIn, totalInAmount, totalFee);
     }
 
     function setChainMessager(uint64 chainSelector, address LynkMessager) public {
@@ -111,7 +124,7 @@ contract LynkSwapRouter is UUPSUpgradeable {
         uint256 minOut
     )
         internal
-        returns (uint256 fees)
+        returns (uint256 fees, bytes32 messageId)
     {
         LynkSwapRouterStorage storage $ = _getLynkSwapRouterStorage();
 
@@ -134,7 +147,7 @@ contract LynkSwapRouter is UUPSUpgradeable {
         IERC20(inToken).approve(address($.router), inAmount);
 
         // Send the message through the router and store the returned message ID
-        bytes32 messageId = $.router.ccipSend{ value: fees }(chainSelector, evm2AnyMessage);
+        messageId = $.router.ccipSend{ value: fees }(chainSelector, evm2AnyMessage);
 
         // Emit an event with message details
         emit TokensTransferred(messageId, chainSelector, messager, inToken, inAmount, address(0), fees);
@@ -185,4 +198,6 @@ contract LynkSwapRouter is UUPSUpgradeable {
 
     // don't add auth for test
     function _authorizeUpgrade(address newImplementation) internal override { }
+
+    receive() external payable { }
 }
