@@ -1,0 +1,46 @@
+{
+  "name": "fastify-typescript-starter",
+  "version": "4.1.0",
+  "description": "Fastify TypeScript starter repository",
+  "scripts": {
+    "watch": "tsc --watch --preserveWatchOutput --pretty",
+    "dev": "cross-env NODE_ENV=development nodemon",
+    "lint": "prettier --write .",
+    "build": "rimraf dist && tsc",
+    "start": "node dist/index.js"
+  },
+  "author": "Noy <Noy_eth@proton.me>",
+  "license": "MIT",
+  "dependencies": {
+    "@ethersproject/abi": "^5.0.0",
+    "@ethersproject/bytes": "^5.0.0",
+    "@ethersproject/providers": "^5.0.0",
+    "@fastify/env": "^4.1.0",
+    "@fastify/swagger": "^7.6.0",
+    "@fastify/type-provider-typebox": "^2.3.0",
+    "@sinclair/typebox": "^0.24.42",
+    "@typechain/ethers-v5": "^10.1.0",
+    "asn1js": "^3.0.5",
+    "dotenv": "^16.0.2",
+    "ecdsa-sig-formatter": "^1.0.11",
+    "ethers": "^5.7.1",
+    "fastify": "^4.6.0",
+    "fastify-tsconfig": "^1.0.1",
+    "fluent-json-schema": "^4.0.0",
+    "moment": "^2.29.4",
+    "pkijs": "^3.0.8",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.0",
+    "typechain": "^8.1.0",
+    "typescript": "^4.8.3",
+    "@types/node": "latest"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "cspell": "^6.10.1",
+    "nodemon": "^2.0.20",
+    "pino-pretty": "^9.1.0",
+    "prettier": "^2.7.1"
+  }
+}
