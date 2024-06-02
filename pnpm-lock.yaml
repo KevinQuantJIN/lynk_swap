@@ -42,7 +42,7 @@ importers:
         version: 0.12.4
       viem:
         specifier: ^2.9.16
-        version: 2.13.3
+        version: 2.13.3(typescript@5.4.5)
     devDependencies:
       forge-std:
         specifier: github:foundry-rs/forge-std#v1.8.1
@@ -74,12 +74,15 @@ importers:
       '@fastify/type-provider-typebox':
         specifier: ^2.3.0
         version: 2.4.0(@sinclair/typebox@0.24.51)(fastify@4.27.0)
+      '@prisma/client':
+        specifier: 5.14.0
+        version: 5.14.0(prisma@5.14.0)
       '@sinclair/typebox':
         specifier: ^0.24.42
         version: 0.24.51
-      '@typechain/ethers-v5':
-        specifier: ^10.1.0
-        version: 10.2.1(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2)(ethers@5.7.2)(typechain@8.3.2)(typescript@4.9.5)
+      '@types/json-bigint':
+        specifier: ^1.0.4
+        version: 1.0.4
       '@types/node':
         specifier: latest
         version: 20.13.0
@@ -96,7 +99,7 @@ importers:
         specifier: ^5.7.1
         version: 5.7.2
       fastify:
-        specifier: ^4.6.0
+        specifier: ^4.27.0
         version: 4.27.0
       fastify-tsconfig:
         specifier: ^1.0.1
@@ -104,27 +107,36 @@ importers:
       fluent-json-schema:
         specifier: ^4.0.0
         version: 4.2.1
+      json-bigint:
+        specifier: ^1.0.0
+        version: 1.0.0
       moment:
         specifier: ^2.29.4
         version: 2.30.1
       pkijs:
         specifier: ^3.0.8
         version: 3.0.16
+      prisma:
+        specifier: ^5.14.0
+        version: 5.14.0
       rimraf:
         specifier: ^3.0.2
         version: 3.0.2
       ts-node:
         specifier: ^10.9.1
-        version: 10.9.2(@types/node@20.13.0)(typescript@4.9.5)
+        version: 10.9.2(@types/node@20.13.0)(typescript@5.4.5)
       tsconfig-paths:
         specifier: ^4.1.0
         version: 4.2.0
       typechain:
         specifier: ^8.1.0
-        version: 8.3.2(typescript@4.9.5)
+        version: 8.3.2(typescript@5.4.5)
       typescript:
-        specifier: ^4.8.3
-        version: 4.9.5
+        specifier: ^5.4.5
+        version: 5.4.5
+      viem:
+        specifier: ^2.9.16
+        version: 2.13.3(typescript@5.4.5)
     devDependencies:
       cross-env:
         specifier: ^7.0.3
@@ -1512,6 +1524,51 @@ packages:
       - supports-color
     dev: false
 
+  /@prisma/client@5.14.0(prisma@5.14.0):
+    resolution: {integrity: sha512-akMSuyvLKeoU4LeyBAUdThP/uhVP3GuLygFE3MlYzaCb3/J8SfsYBE5PkaFuLuVpLyA6sFoW+16z/aPhNAESqg==}
+    engines: {node: '>=16.13'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      prisma: 5.14.0
+    dev: false
+
+  /@prisma/debug@5.14.0:
+    resolution: {integrity: sha512-iq56qBZuFfX3fCxoxT8gBX33lQzomBU0qIUaEj1RebsKVz1ob/BVH1XSBwwwvRVtZEV1b7Fxx2eVu34Ge/mg3w==}
+    dev: false
+
+  /@prisma/engines-version@5.14.0-25.e9771e62de70f79a5e1c604a2d7c8e2a0a874b48:
+    resolution: {integrity: sha512-ip6pNkRo1UxWv+6toxNcYvItNYaqQjXdFNGJ+Nuk2eYtRoEdoF13wxo7/jsClJFFenMPVNVqXQDV0oveXnR1cA==}
+    dev: false
+
+  /@prisma/engines@5.14.0:
+    resolution: {integrity: sha512-lgxkKZ6IEygVcw6IZZUlPIfLQ9hjSYAtHjZ5r64sCLDgVzsPFCi2XBBJgzPMkOQ5RHzUD4E/dVdpn9+ez8tk1A==}
+    requiresBuild: true
+    dependencies:
+      '@prisma/debug': 5.14.0
+      '@prisma/engines-version': 5.14.0-25.e9771e62de70f79a5e1c604a2d7c8e2a0a874b48
+      '@prisma/fetch-engine': 5.14.0
+      '@prisma/get-platform': 5.14.0
+    dev: false
+
+  /@prisma/fetch-engine@5.14.0:
+    resolution: {integrity: sha512-VrheA9y9DMURK5vu8OJoOgQpxOhas3qF0IBHJ8G/0X44k82kc8E0w98HCn2nhnbOOMwbWsJWXfLC2/F8n5u0gQ==}
+    dependencies:
+      '@prisma/debug': 5.14.0
+      '@prisma/engines-version': 5.14.0-25.e9771e62de70f79a5e1c604a2d7c8e2a0a874b48
+      '@prisma/get-platform': 5.14.0
+    dev: false
+
+  /@prisma/get-platform@5.14.0:
+    resolution: {integrity: sha512-/yAyBvcEjRv41ynZrhdrPtHgk47xLRRq/o5eWGcUpBJ1YrUZTYB8EoPiopnP7iQrMATK8stXQdPOoVlrzuTQZw==}
+    dependencies:
+      '@prisma/debug': 5.14.0
+    dev: false
+
   /@scroll-tech/contracts@0.1.0:
     resolution: {integrity: sha512-aBbDOc3WB/WveZdpJYcrfvMYMz7ZTEiW8M9XMJLba8p9FAR5KGYB/cV+8+EUsq3MKt7C1BfR+WnXoTVdvwIY6w==}
     dev: false
@@ -1646,24 +1703,6 @@ packages:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
     dev: false
 
-  /@typechain/ethers-v5@10.2.1(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2)(ethers@5.7.2)(typechain@8.3.2)(typescript@4.9.5):
-    resolution: {integrity: sha512-n3tQmCZjRE6IU4h6lqUGiQ1j866n5MTCBJreNEHHVWXa2u9GJTaeYyU1/k+1qLutkyw+sS6VAN+AbeiTqsxd/A==}
-    peerDependencies:
-      '@ethersproject/abi': ^5.0.0
-      '@ethersproject/providers': ^5.0.0
-      ethers: ^5.1.3
-      typechain: ^8.1.1
-      typescript: '>=4.3.0'
-    dependencies:
-      '@ethersproject/abi': 5.7.0
-      '@ethersproject/providers': 5.7.2
-      ethers: 5.7.2
-      lodash: 4.17.21
-      ts-essentials: 7.0.3(typescript@4.9.5)
-      typechain: 8.3.2(typescript@4.9.5)
-      typescript: 4.9.5
-    dev: false
-
   /@types/bn.js@4.11.6:
     resolution: {integrity: sha512-pqr857jrp2kPuO9uRjZ3PwnJTjoQy+fcdxvBTvHm6dkmEL9q+hDD/2j/0ELOBPtPnS8LjCX0gI9nbl8lVkadpg==}
     dependencies:
@@ -1681,6 +1720,10 @@ packages:
     resolution: {integrity: sha512-AkCYCmwlXeuH89DagDCzvCAyltI2v9lh3U3DqSg/GrBYoReAaWwxfXCqMx9UV5MajLZ4ZFwZzV4cABGIxk2XRw==}
     dependencies:
       ci-info: 3.9.0
+    dev: false
+
+  /@types/json-bigint@1.0.4:
+    resolution: {integrity: sha512-ydHooXLbOmxBbubnA7Eh+RpBzuaIiQjh8WGJYQB50JFGFrdxW7JzVlyEV7fAXw0T2sqJ1ysTneJbiyNLqZRAag==}
     dev: false
 
   /@types/lru-cache@5.1.1:
@@ -1759,7 +1802,7 @@ packages:
     resolution: {integrity: sha512-GpSwvyXOcOOlV70vbnzjj4fW5xW/FdUF6nQEt1ENy7m4ZCczi1+/buVUPAqmGfqznsORNFzUMjctTIp8a9tuCQ==}
     dev: false
 
-  /abitype@1.0.0:
+  /abitype@1.0.0(typescript@5.4.5):
     resolution: {integrity: sha512-NMeMah//6bJ56H5XRj8QCV4AwuW6hB6zqz2LnhhLdcWVQOsXki6/Pn3APeqxCma62nXIcmZWdu1DlHWS74umVQ==}
     peerDependencies:
       typescript: '>=5.0.4'
@@ -1769,6 +1812,8 @@ packages:
         optional: true
       zod:
         optional: true
+    dependencies:
+      typescript: 5.4.5
     dev: false
 
   /abort-controller@3.0.0:
@@ -2076,6 +2121,10 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       is-windows: 1.0.2
+    dev: false
+
+  /bignumber.js@9.1.2:
+    resolution: {integrity: sha512-2/mKyZH9K85bzOEfhXDBFZTGd1CTs+5IHpeFQo9luiBG7hghdC851Pj2WAhb6E3R6b9tZj/XKhbg4fum+Kepug==}
     dev: false
 
   /binary-extensions@2.3.0:
@@ -4232,6 +4281,12 @@ packages:
     dependencies:
       argparse: 2.0.1
 
+  /json-bigint@1.0.0:
+    resolution: {integrity: sha512-SiPv/8VpZuWbvLSMtTDU8hEfrZWg/mH/nV/b4o0CYbSxu1UIQPLdwKOCIyLQX+VIPO5vrLX3i8qtqFyhdPSUSQ==}
+    dependencies:
+      bignumber.js: 9.1.2
+    dev: false
+
   /json-buffer@3.0.1:
     resolution: {integrity: sha512-4bV5BfR2mqfQTJm+V5tPPdf+ZpuhiIvTuAB5g8kcrXOZpTT/QwwVRWBywX1ozr6lEuPdbHxwaJlm9G6mI2sfSQ==}
     dev: true
@@ -4988,6 +5043,15 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
     dev: true
+
+  /prisma@5.14.0:
+    resolution: {integrity: sha512-gCNZco7y5XtjrnQYeDJTiVZmT/ncqCr5RY1/Cf8X2wgLRmyh9ayPAGBNziI4qEE4S6SxCH5omQLVo9lmURaJ/Q==}
+    engines: {node: '>=16.13'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@prisma/engines': 5.14.0
+    dev: false
 
   /process-warning@3.0.0:
     resolution: {integrity: sha512-mqn0kFRl0EoqhnL0GQ0veqFHyIN1yig9RHh/InzORTUiZHFRAur+aMtRkELNwGs9aNwKS6tg/An4NYBPGwvtzQ==}
@@ -5794,15 +5858,15 @@ packages:
       string-format: 2.0.0
     dev: false
 
-  /ts-essentials@7.0.3(typescript@4.9.5):
+  /ts-essentials@7.0.3(typescript@5.4.5):
     resolution: {integrity: sha512-8+gr5+lqO3G84KdiTSMRLtuyJ+nTBVRKuCrK4lidMPdVeEp0uqC875uE5NMcaA7YYMN7XsNiFQuMvasF8HT/xQ==}
     peerDependencies:
       typescript: '>=3.7.0'
     dependencies:
-      typescript: 4.9.5
+      typescript: 5.4.5
     dev: false
 
-  /ts-node@10.9.2(@types/node@20.13.0)(typescript@4.9.5):
+  /ts-node@10.9.2(@types/node@20.13.0)(typescript@5.4.5):
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
     peerDependencies:
@@ -5828,7 +5892,7 @@ packages:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 4.9.5
+      typescript: 5.4.5
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     dev: false
@@ -5911,7 +5975,7 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /typechain@8.3.2(typescript@4.9.5):
+  /typechain@8.3.2(typescript@5.4.5):
     resolution: {integrity: sha512-x/sQYr5w9K7yv3es7jo4KTX05CLxOf7TRWwoHlrjRh8H82G64g+k7VuWPJlgMo6qrjfCulOdfBjiaDtmhFYD/Q==}
     hasBin: true
     peerDependencies:
@@ -5926,8 +5990,8 @@ packages:
       mkdirp: 1.0.4
       prettier: 2.8.8
       ts-command-line-args: 2.5.1
-      ts-essentials: 7.0.3(typescript@4.9.5)
-      typescript: 4.9.5
+      ts-essentials: 7.0.3(typescript@5.4.5)
+      typescript: 5.4.5
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -5986,9 +6050,9 @@ packages:
       is-typedarray: 1.0.0
     dev: true
 
-  /typescript@4.9.5:
-    resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
-    engines: {node: '>=4.2.0'}
+  /typescript@5.4.5:
+    resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
+    engines: {node: '>=14.17'}
     hasBin: true
     dev: false
 
@@ -6075,7 +6139,7 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: false
 
-  /viem@2.13.3:
+  /viem@2.13.3(typescript@5.4.5):
     resolution: {integrity: sha512-3tlwDRKHSelupFjbFMdUxF41f79ktyH2F9PAQ9Dltbs1DpdDlR1x+Ksa0th6qkyjjAbpDZP3F5nMTJv/1GVPdQ==}
     peerDependencies:
       typescript: '>=5.0.4'
@@ -6088,8 +6152,9 @@ packages:
       '@noble/hashes': 1.3.2
       '@scure/bip32': 1.3.2
       '@scure/bip39': 1.2.1
-      abitype: 1.0.0
+      abitype: 1.0.0(typescript@5.4.5)
       isows: 1.0.4(ws@8.13.0)
+      typescript: 5.4.5
       ws: 8.13.0
     transitivePeerDependencies:
       - bufferutil

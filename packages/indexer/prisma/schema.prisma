@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Swap {
+  transactionHash  String  @id @map("transaction_hash")
+  userAddress      String  @map("user_address")
+  fromChainId      Decimal @map("from_chain_id")
+  fromTokenAddress String  @map("from_token_address")
+  fromTokenAmount  Decimal @map("from_token_amount")
+  fees             Decimal @map("fees")
+  deals            Deal[]  @relation(fields: [], references: [])
+
+  @@index([userAddress])
+  @@map("swap")
+}
+
+model Deal {
+  messageId String   @id @map("message_id")
+  chainId   Decimal? @map("chain_id")
+
+  fromTokenAddress String?  @map("from_token_address")
+  fromTokenAmount  Decimal? @map("from_token_amount")
+  toTokenAddress   String?  @map("to_token_address")
+  toTokenAmount    Decimal? @map("to_token_amount")
+  status           String   @map("status")
+
+  transactionHash     String? @map("transaction_hash")
+  swap                Swap    @relation(fields: [swapTransactionHash], references: [transactionHash])
+  swapTransactionHash String  @map("swap_transaction_hash")
+
+  @@map("deal")
+}
