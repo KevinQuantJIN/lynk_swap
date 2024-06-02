@@ -110,7 +110,10 @@ $$  \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + (1 - \alpha) k)^2} $$
 ### Expansion: from Two to Multiple Chains
 
 Based on the equilibrium condition, which is the no-arbitrage condition of equal prices, we can derive that in the case of three chains, the equilibrium condition follows:
-$$ \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + \beta k)^2} = \frac{c}{(x_3 + (1 - \alpha - \beta)k)^2} $$
+
+$$ 
+\frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + \beta k)^2} = \frac{c}{(x_3 + (1 - \alpha - \beta)k)^2} 
+$$
 
 Where:
 - $a, b, c$ are the constants for each chain's liquidity pool.
@@ -131,7 +134,7 @@ Where:
 - $x_i$ is the initial amount of tokens on the $i$-th chain.
 - $\alpha_i$ is the fraction of $k$ distributed to the $i$-th chain.
 - $k$ is the total amount to be distributed.
-- $\ \sum_{i=1}^{\infty} \alpha_i = 1 $ ensures that the total distribution fractions sum up to 1.
+- $\sum_{i=1}^{\infty} \alpha_i = 1$ ensures that the total distribution fractions sum up to 1.
 
 In this scenario, each chain $i$ will have its liquidity pool adjusted according to the fraction $\alpha_i$ of the total amount $k$ being distributed. The equilibrium condition maintains the no-arbitrage principle across an infinite number of chains, ensuring that the price remains equal across all chains.
 
