@@ -14,6 +14,7 @@ contract LynkSwapRouter is UUPSUpgradeable {
         uint64 chainBSelector;
         uint64 chainCSelector;
         mapping(uint64 => address) messagers;
+        mapping(uint256 => mapping(address => address)) tokenMaps;
     }
 
     error NotEnoughBalance(uint256 currentBalance, uint256 calculatedFees); // Used to make sure contract has enough
@@ -96,6 +97,12 @@ contract LynkSwapRouter is UUPSUpgradeable {
         $.messagers[chainSelector] = LynkMessager;
     }
 
+    function setTokenMap(uint64 chainSelector, address originToken, address destToken) public {
+        LynkSwapRouterStorage storage $ = _getLynkSwapRouterStorage();
+
+        $.tokenMaps[chainSelector][originToken] = destToken;
+    }
+
     function _swapOnSingleChain(
         uint64 chainSelector,
         address inToken,
@@ -110,7 +117,8 @@ contract LynkSwapRouter is UUPSUpgradeable {
 
         address messager = $.messagers[chainSelector];
 
-        bytes memory swapData = abi.encode(inToken, outToken, inAmount, minOut);
+        bytes memory swapData =
+            abi.encode($.tokenMaps[chainSelector][inToken], $.tokenMaps[chainSelector][outToken], inAmount, minOut);
 
         Client.EVM2AnyMessage memory evm2AnyMessage =
             _buildCCIPMessage(messager, inToken, inAmount, address(0), swapData);
@@ -158,7 +166,7 @@ contract LynkSwapRouter is UUPSUpgradeable {
         // Create an EVM2AnyMessage struct in memory with necessary information for sending a cross-chain message
         return Client.EVM2AnyMessage({
             receiver: abi.encode(_receiver), // ABI-encoded receiver address
-            data: data, // No data
+            data: data,
             tokenAmounts: tokenAmounts, // The amount and type of token being transferred
             extraArgs: Client._argsToBytes(
                 // set gas limit to max
