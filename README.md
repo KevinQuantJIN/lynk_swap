@@ -12,6 +12,42 @@ Lynk Swap is an omnichain decentralized exchange (DEX) developed as a project of
 
 The demo development is based on the Uniswap V2 constant product market maker (CPMM) algorithm. Currently, we have completed demo development for the 1-N Swap and 1-1 Swap. The N-N Swap is our ultimate product goal.
 
+## Development
+
+### Demo Implementation
+To be filled
+
+### Algorithms Used
+
+Lynk Swap leverages the Constant Product Market Maker (CPMM) algorithm, a fundamental principle behind Uniswap V2, to facilitate decentralized exchanges. Currently, our demo uses Uniswap V2, but we plan to support Uniswap V3 in the future.
+
+Additionally, Lynk Swap incorporates an advanced aggregation algorithm to determine the optimal exchange amounts. The 1-N Swap algorithm is designed to distribute assets from one chain to multiple chains at the best price. This algorithm operates under the arbitrage-free assumption, ensuring that the prices across different chains are equalized to prevent arbitrage opportunities. 
+
+For the future N-N Swap mode, Lynk Swap aims to extend this aggregation algorithm to handle multiple assets across multiple chains, optimizing the overall swap process by balancing liquidity and achieving the best exchange rates across a diverse set of chains.
+
+### Supported Chains
+
+Lynk Swap currently supports the following blockchain networks:
+
+- Ethereum (ETH)
+- Polygon (MATIC)
+- Base (BASE)
+- Avalanche (AVAX)
+
+In the future, Lynk Swap plans to support more blockchain networks, including additional EVM compatible chains and even non-EVM chains. This expansion will further enhance the interoperability and reach of the platform.
+
+Cross-chain functionality in Lynk Swap is implemented using the Chainlink Cross-Chain Interoperability Protocol (CCIP), which ensures secure and efficient interactions between different blockchain networks.
+
+
+## Chainlink Function Used
+
+### Cross-Chain Interoperability Protocol (CCIP)
+
+### Automation
+
+### Oracle
+
+
 ## 1-N Swap Algorithm
 
 In the 1-N swap algorithm, the goal is to exchange assets from one chain to multiple chains at the optimal price. The distribution of assets across different chains is determined based on an arbitrage-free assumption. Below is the detailed derivation of the equilibrium condition for the 1-N swap algorithm.
@@ -139,33 +175,6 @@ Where:
 In this scenario, each chain $i$ will have its liquidity pool adjusted according to the fraction $\alpha_i$ of the total amount $k$ being distributed. The equilibrium condition maintains the no-arbitrage principle across an infinite number of chains, ensuring that the price remains equal across all chains.
 
 
-## Development
 
-### Demo Implementation
-tbf
-
-### Algorithms Used
-
-Lynk Swap leverages the Constant Product Market Maker (CPMM) algorithm, a fundamental principle behind Uniswap V2, to facilitate decentralized exchanges. Currently, our demo uses Uniswap V2, but we plan to support Uniswap V3 in the future.
-
-Additionally, Lynk Swap incorporates an advanced aggregation algorithm to determine the optimal exchange amounts. The 1-N Swap algorithm is designed to distribute assets from one chain to multiple chains at the best price. This algorithm operates under the arbitrage-free assumption, ensuring that the prices across different chains are equalized to prevent arbitrage opportunities. 
-
-For the future N-N Swap mode, Lynk Swap aims to extend this aggregation algorithm to handle multiple assets across multiple chains, optimizing the overall swap process by balancing liquidity and achieving the best exchange rates across a diverse set of chains.
-
-### Supported Chains
-
-Lynk Swap currently supports the following blockchain networks:
-
-- Ethereum (ETH)
-- Polygon (MATIC)
-- Base (BASE)
-- Avalanche (AVAX)
-
-In the future, Lynk Swap plans to support more blockchain networks, including additional EVM compatible chains and even non-EVM chains. This expansion will further enhance the interoperability and reach of the platform.
-
-Cross-chain functionality in Lynk Swap is implemented using the Chainlink Cross-Chain Interoperability Protocol (CCIP), which ensures secure and efficient interactions between different blockchain networks.
-
-
-## Chainlink Function Used
 
 
