@@ -51,6 +51,7 @@ const config: HardhatUserConfig = {
     amoy: {
       url: node_url("amoy"),
       accounts: accounts("amoy"),
+      gasPrice: 20000000000, // 20 gwei
     },
   },
   paths: {
