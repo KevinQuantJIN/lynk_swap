@@ -31,14 +31,14 @@ In the 1-N swap algorithm, the goal is to exchange assets from one chain to mult
 ## Given Equations
 
 We start with the following initial conditions:
-$\ \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + (\beta k)^2)} = \frac{c}{(x_3 + (1 - \alpha - \beta)k)^2} $
+$\ \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + \beta k)^2} = \frac{c}{(x_3 + (1 - \alpha - \beta)k)^2} $
 
 Where:
-- $\ a, b, c \$ are the constants representing the respective token amounts.
-- $\ x_1, x_2, x_3 \$ are the initial amounts of tokens on chains 1, 2, and 3 respectively.
-- $\ \alpha, \beta \$ are the fractions of $ k $ distributed to chains 1 and 2 respectively.
+- $a, b, c$ are the constants representing the respective token amounts.
+- $x_1, x_2, x_3$ are the initial amounts of tokens on chains 1, 2, and 3 respectively.
+- $\ \alpha, \beta \$ are the fractions of $k$ distributed to chains 1 and 2 respectively.
 - $\ k \$ is the total amount to be distributed.
-- $\( 1 - \alpha - \beta \$ is the fraction of $ k $ distributed to chain 3.
+- $\( 1 - \alpha - \beta \$ is the fraction of $k$ distributed to chain 3.
 
 ## Step-by-Step Derivation
 
