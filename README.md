@@ -47,7 +47,7 @@ Determine:
 - $\alpha k$ ETH swapped on Chain A.
 - $(1-\alpha)k$ ETH swapped on Chain B.
 
-
+#### Optimization
 To optimize the value of $\alpha$ to get the highest amount of USDT in return when swapping $k$ ETH into USDT across two different chains (Chain A and Chain B) using CFMM, we'll need to calculate the USDT received from each chain based on how much ETH is swapped there.
 
 Given:
