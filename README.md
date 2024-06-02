@@ -43,9 +43,15 @@ Cross-chain functionality in Lynk Swap is implemented using the Chainlink Cross-
 
 ### Cross-Chain Interoperability Protocol (CCIP)
 
+We use CCIP to implement the main logic of our product. On one hand, cross-chain token transfers are executed using CCIP's native functionality; on the other hand, the routing path of token swaps after the cross-chain transfer is also facilitated by CCIP for data transmission.
+
 ### Automation
 
-### Oracle
+We use Chainlink Automation to execute transactions on the target chain. When the conditions are met (within the slippage range), the swap will be executed. If the conditions are not met, the transaction will be temporarily suspended and executed when the conditions are satisfied.
+
+### Price Feed
+
+We primarily use price feed on the front end to display real-time rice-related data.
 
 
 ## 1-N Swap Algorithm
