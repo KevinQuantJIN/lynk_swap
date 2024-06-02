@@ -98,7 +98,17 @@ Maximize Total USDT with respect to $`\alpha`$:
 
 $$\max_\alpha \left( \left( y_1 - \frac{a}{x_1 + \alpha \times k} \right) + \left( y_2 - \frac{b}{x_2 + (1 - \alpha) \times k} \right) \right)$$
 
+You can solve this optimization problem by finding the first derivative and using the zero condition. It turns out that the optimal condition is that the prices of the two pools after the exchange are equal, which aligns with the no-arbitrage assumption in finance.
 
+The equilibrium condition is as follows:
+
+$\ \frac{y_1 - \text{USDT}_a}{x_1 + \alpha k} = \frac{y_2 - \text{USDT}_b}{x_2 + (1 - \alpha) k} $
+
+and we get:
+
+$\  \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + (1 - \alpha) k)^2} $
+
+$\ \frac{a}{(x_1 + \alpha k)^2} = \frac{b}{(x_2 + \beta k)^2}$
 
 
 We start with the following initial conditions:
