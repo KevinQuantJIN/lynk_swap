@@ -34,6 +34,8 @@ Lynk Swap currently supports the following blockchain networks:
 - Base (BASE)
 - Avalanche (AVAX)
 
+Contract deployment information can be seen in [packages/contracts/deployments](packages/contracts/deployments)
+
 In the future, Lynk Swap plans to support more blockchain networks, including additional EVM compatible chains and even non-EVM chains. This expansion will further enhance the interoperability and reach of the platform.
 
 Cross-chain functionality in Lynk Swap is implemented using the Chainlink Cross-Chain Interoperability Protocol (CCIP), which ensures secure and efficient interactions between different blockchain networks.
