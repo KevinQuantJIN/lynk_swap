@@ -17,7 +17,10 @@ export default function Home() {
           Discover the Best Exchange Rates Across All Chains
         </h2>
         <Stats />
-        <Link href="/app" className="mt-8 mb-8 inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 transition duration-300">
+        <Link
+          href="/app"
+          className="mt-8 mb-8 inline-block px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg hover:bg-blue-700 transition duration-300"
+        >
           Launch App
         </Link>
         <div className="flex justify-center items-center space-x-6 mt-10">
@@ -29,4 +32,4 @@ export default function Home() {
       </div>
     </main>
   );
-} 
+}
