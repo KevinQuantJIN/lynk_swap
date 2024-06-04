@@ -83,6 +83,7 @@ export function startListen() {
       transport: http(m.url),
     });
 
+    // watch Order filled
     client.watchEvent({
       address: m.address as Hex,
       event: parseAbiItem(
@@ -104,6 +105,37 @@ export function startListen() {
                 toTokenAddress: l.args.toToken!,
                 toTokenAmount: l.args.toAmount!.toString(),
                 status: 'Success',
+              },
+            });
+          });
+        } catch (e) {
+          console.error(e);
+        }
+      },
+      onError(error) {
+        console.log(error);
+      },
+    });
+
+    // watch order waiting
+    client.watchEvent({
+      address: m.address as Hex,
+      event: parseAbiItem('event OrderWaiting(bytes32 messageId, address fromToken, uint256 fromAmount, address toToken)'),
+      fromBlock: BigInt(m.startBlock),
+      onLogs: (logs) => {
+        console.log('find logs', logs);
+
+        try {
+          logs.forEach(async (l) => {
+            const tx = await client.getTransactionReceipt({ hash: l.transactionHash });
+            await prisma.deal.update({
+              where: { messageId: l.args.messageId! },
+              data: {
+                transactionHash: tx.transactionHash,
+                fromTokenAddress: l.args.fromToken!,
+                fromTokenAmount: l.args.fromAmount!.toString(),
+                toTokenAddress: l.args.toToken!,
+                status: 'Waiting',
               },
             });
           });

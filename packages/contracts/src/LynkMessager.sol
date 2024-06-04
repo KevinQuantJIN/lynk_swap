@@ -85,9 +85,9 @@ contract LynkMessager is UUPSUpgradeable, CCIPReceiverUpgradeable, AutomationCom
 
         (bool success, bytes memory res) = address($.uniswapV2Router).call(callData);
 
-        uint256[] memory amount = abi.decode(res, (uint256[]));
-
         if (success) {
+            uint256[] memory amount = abi.decode(res, (uint256[]));
+
             emit OrderFilled(messageId, inToken, inAmount, outToken, amount[1]);
         } else {
             // save the intention and wait for suitable time
