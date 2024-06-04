@@ -186,10 +186,10 @@ In this scenario, each chain $i$ will have its liquidity pool adjusted according
 - Initialize alpha and beta.
 - Set a small step size (step) and maximum number of iterations (maxIterations).
 - Iterate until the maximum number of iterations is reached:
--   Calculate the left-hand side (lhs) of the equation for all three pools.
--   Check if the difference between these lhs values is within the acceptable tolerance (epsilon).
--   Adjust alpha and beta based on the comparison of lhs values to minimize the difference.
-- Constrain alpha and beta to the range [0, 1].
+   - Calculate the left-hand side (lhs) of the equation for all three pools.
+   - Check if the difference between these lhs values is within the acceptable tolerance (epsilon).
+   - Adjust alpha and beta based on the comparison of lhs values to minimize the difference.
+   - Constrain alpha and beta to the range [0, 1].
 - If a solution is found within the tolerance, return alpha and beta.
 
 
