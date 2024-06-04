@@ -18,7 +18,14 @@ export default async function txsController(fastify: FastifyInstance) {
 
     const data = await prismaCliet.swap.findMany({
       where: { userAddress: address.toLowerCase() },
-      select: { deals: true, userAddress: true, fromTokenAddress: true, fromTokenAmount: true, fees: true },
+      select: {
+        deals: true,
+        userAddress: true,
+        fromTokenAddress: true,
+        fromTokenAmount: true,
+        fees: true,
+        transactionHash: true,
+      },
     });
     reply.send(data);
   });
