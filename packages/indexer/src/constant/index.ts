@@ -23,6 +23,6 @@ export const MESSAGERS = [
     chain: avalancheFuji,
     address: '0xf8C14506a9f5DEc750211d173894d1999ca35dC4',
     startBlock: 33672787,
-    url: 'https://rpc.ankr.com/avalanche_fuji/a040a36e16527866052f32a9d44a40b5acf334b733a530b9ee4ba6cc435c6375',
+    url: 'https://avalanche-fuji.infura.io/v3/be4b457f0235441483b446d32c0046e2',
   },
 ];

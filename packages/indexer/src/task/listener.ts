@@ -77,7 +77,7 @@ export function startListen() {
     },
   });
 
-  MESSAGERS.forEach((m) => {
+  MESSAGERS.forEach(async (m) => {
     const client = createPublicClient({
       chain: m.chain as Chain,
       transport: http(m.url),
@@ -117,11 +117,13 @@ export function startListen() {
       },
     });
 
+    const latestBlock = await client.getBlock({ blockTag: 'latest' });
+
     // watch order waiting
     client.watchEvent({
       address: m.address as Hex,
       event: parseAbiItem('event OrderWaiting(bytes32 messageId, address fromToken, uint256 fromAmount, address toToken)'),
-      fromBlock: BigInt(m.startBlock),
+      fromBlock: latestBlock.number - BigInt(50000),
       onLogs: (logs) => {
         console.log('find logs', logs);
 
