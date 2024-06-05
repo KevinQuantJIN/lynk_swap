@@ -93,8 +93,8 @@ export function startListen() {
       onLogs: (logs) => {
         console.log('find logs', logs);
 
-        try {
-          logs.forEach(async (l) => {
+        logs.forEach(async (l) => {
+          try {
             const tx = await client.getTransactionReceipt({ hash: l.transactionHash });
             await prisma.deal.update({
               where: { messageId: l.args.messageId! },
@@ -107,10 +107,10 @@ export function startListen() {
                 status: 'Success',
               },
             });
-          });
-        } catch (e) {
-          console.error(e);
-        }
+          } catch (e) {
+            console.error(e);
+          }
+        });
       },
       onError(error) {
         console.log(error);
@@ -127,8 +127,8 @@ export function startListen() {
       onLogs: (logs) => {
         console.log('find logs', logs);
 
-        try {
-          logs.forEach(async (l) => {
+        logs.forEach(async (l) => {
+          try {
             const tx = await client.getTransactionReceipt({ hash: l.transactionHash });
             await prisma.deal.update({
               where: { messageId: l.args.messageId! },
@@ -140,10 +140,10 @@ export function startListen() {
                 status: 'Waiting',
               },
             });
-          });
-        } catch (e) {
-          console.error(e);
-        }
+          } catch (e) {
+            console.error(e);
+          }
+        });
       },
       onError(error) {
         console.log(error);
